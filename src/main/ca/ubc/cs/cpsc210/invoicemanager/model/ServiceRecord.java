@@ -1,51 +1,17 @@
 package ca.ubc.cs.cpsc210.invoicemanager.model;
 
 // Represents a service provided for a customer
-public class ServiceRecord implements Comparable<ServiceRecord> {
-    public static int REG_CALLOUT = 80;
-    public static int REG_SERVICE_HOURLY = 80;
-    public static int REG_SERVICEPTS_BASE = 10;
-    public static int REG_SERVICEPTS_HOURLY = 2;
-    public static int AFTER_HOURS_CALLOUT = 120;
-    public static int AFTER_HOURS_SERVICE_HOURLY = 100;
-    public static int AFTER_HOURS_SERVICEPTS_BASE = 5;
-    public static int AFTER_HOURS_SERVICEPTS_HOURLY = 1;
-    public static int EMERG_CALLOUT = 150;
-    public static int EMERG_SERVICE_HOURLY = 100;
-    public static int EMERG_SERVICEPTS_BASE = 0;
-    public static int EMERG_SERVICEPTS_HOURLY = 0;
-
-    private static int nextRecordID = 0;
-    private ServiceType serviceType;
-    private Invoice invoice;
-    private int hours;
-    private int recordID;
+public class ServiceRecord extends AbstractServiceRecord {
 
     // EFFECTS: constructs service record for service of given number of hours and given type
     public ServiceRecord(ServiceType serviceType, int hours) {
-        this.hours = hours;
+        super(hours, serviceType);
         this.recordID = ++nextRecordID;
-        this.serviceType = serviceType;
         buildInvoice();
     }
 
-    public int getRecordID() {
-        return recordID;
-    }
-
-    public int getHours() {
-        return hours;
-    }
-
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
-    public ServiceType getServiceType() {
-        return serviceType;
-    }
-
     // EFFECTS: returns number of service points earned with this service record
+    @Override
     public int getServicePoints() {
         int servicePoints = 0;
 
@@ -65,6 +31,7 @@ public class ServiceRecord implements Comparable<ServiceRecord> {
     }
 
     // EFFECTS: returns callout fee in $ for this service record
+    @Override
     public int getCalloutFee() {
         int calloutFee = 0;
 
@@ -84,6 +51,7 @@ public class ServiceRecord implements Comparable<ServiceRecord> {
     }
 
     // EFFECTS: returns service fee in $ for this service record
+    @Override
     public int getServiceFee() {
         int serviceFee = 0;
 
@@ -102,15 +70,4 @@ public class ServiceRecord implements Comparable<ServiceRecord> {
         return serviceFee;
     }
 
-    @Override
-    // NOTE: this class has a natural ordering that is inconsistent with equals()
-    public int compareTo(ServiceRecord other) {
-        return recordID - other.recordID;
-    }
-
-    // MODIFIES: this
-    // EFFECTS:  create invoice for this service record
-    private void buildInvoice() {
-        invoice = new Invoice(recordID, getCalloutFee(), getServiceFee(), hours);
-    }
 }

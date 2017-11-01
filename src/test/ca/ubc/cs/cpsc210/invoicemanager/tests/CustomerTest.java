@@ -1,9 +1,6 @@
 package ca.ubc.cs.cpsc210.invoicemanager.tests;
 
-import ca.ubc.cs.cpsc210.invoicemanager.model.Customer;
-import ca.ubc.cs.cpsc210.invoicemanager.model.Invoice;
-import ca.ubc.cs.cpsc210.invoicemanager.model.ServiceRecord;
-import ca.ubc.cs.cpsc210.invoicemanager.model.ServiceType;
+import ca.ubc.cs.cpsc210.invoicemanager.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +30,7 @@ public class CustomerTest {
         testCustomer.addServiceRecord(ServiceType.REGULAR, 1);
 
         assertEquals(1, testCustomer.getServiceRecords().size());
-        assertEquals(ServiceRecord.REG_SERVICEPTS_BASE + ServiceRecord.REG_SERVICEPTS_HOURLY,
+        assertEquals(AbstractServiceRecord.REG_SERVICEPTS_BASE + AbstractServiceRecord.REG_SERVICEPTS_HOURLY,
                 testCustomer.getServicePoints());
     }
 
@@ -44,9 +41,9 @@ public class CustomerTest {
         testCustomer.addServiceRecord(ServiceType.EMERGENCY, 1);
 
         assertEquals(3, testCustomer.getServiceRecords().size());
-        assertEquals(ServiceRecord.REG_SERVICEPTS_BASE + ServiceRecord.REG_SERVICEPTS_HOURLY
-                        + ServiceRecord.AFTER_HOURS_SERVICEPTS_BASE + ServiceRecord.AFTER_HOURS_SERVICEPTS_HOURLY
-                        + ServiceRecord.EMERG_SERVICEPTS_BASE + ServiceRecord.EMERG_SERVICEPTS_HOURLY,
+        assertEquals(AbstractServiceRecord.REG_SERVICEPTS_BASE + AbstractServiceRecord.REG_SERVICEPTS_HOURLY
+                        + AbstractServiceRecord.AFTER_HOURS_SERVICEPTS_BASE + AbstractServiceRecord.AFTER_HOURS_SERVICEPTS_HOURLY
+                        + AbstractServiceRecord.EMERG_SERVICEPTS_BASE + AbstractServiceRecord.EMERG_SERVICEPTS_HOURLY,
                 testCustomer.getServicePoints());
     }
 
@@ -63,7 +60,7 @@ public class CustomerTest {
         testCustomer.addServiceRecord(ServiceType.REGULAR, 1);
         testCustomer.addServiceRecord(ServiceType.REGULAR, 1);
 
-        ServiceRecord firstRecord = testCustomer.getServiceRecords().first();
+        AbstractServiceRecord firstRecord = testCustomer.getServiceRecords().first();
         Invoice firstRecordInvoice = firstRecord.getInvoice();
         firstRecordInvoice.makePayment(firstRecordInvoice.getAmountOwing());
 
@@ -75,7 +72,7 @@ public class CustomerTest {
         testCustomer.addServiceRecord(ServiceType.REGULAR, 1);
         testCustomer.addServiceRecord(ServiceType.REGULAR, 1);
 
-        for (ServiceRecord next : testCustomer.getServiceRecords()) {
+        for (AbstractServiceRecord next : testCustomer.getServiceRecords()) {
             Invoice nextInvoice = next.getInvoice();
             nextInvoice.makePayment(nextInvoice.getAmountOwing());
         }

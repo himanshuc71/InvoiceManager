@@ -7,7 +7,7 @@ import java.util.TreeSet;
 // Represents a customer
 public class Customer {
     private String name;
-    private SortedSet<ServiceRecord> serviceRecords;
+    private SortedSet<AbstractServiceRecord> serviceRecords;
     private int servicePoints;
 
     // EFFECTS: constructs customer with given name, no service records and no service points
@@ -25,13 +25,13 @@ public class Customer {
     // EFFECTS:  adds service record of given type and given number of hours to this customer;
     //           updates customer's service points
     public void addServiceRecord(ServiceType serviceType, int hours) {
-        ServiceRecord serviceRecord = new ServiceRecord(serviceType, hours);
-        serviceRecords.add(serviceRecord);
-        servicePoints += serviceRecord.getServicePoints();
+        AbstractServiceRecord abstractServiceRecord = new ServiceRecord(serviceType, hours);
+        serviceRecords.add(abstractServiceRecord);
+        servicePoints += abstractServiceRecord.getServicePoints();
     }
 
     // EFFECTS: returns an unmodifiable set of service records for this customer, ordered by record ID
-    public SortedSet<ServiceRecord> getServiceRecords() {
+    public SortedSet<AbstractServiceRecord> getServiceRecords() {
         return Collections.unmodifiableSortedSet(serviceRecords);
     }
 
@@ -41,7 +41,7 @@ public class Customer {
 
     // EFFECTS: returns true if customer has paid invoice for all service records in full; false otherwise
     public boolean isInGoodStanding() {
-        for (ServiceRecord next : serviceRecords) {
+        for (AbstractServiceRecord next : serviceRecords) {
             if (!next.getInvoice().isPaidInFull())
                 return false;
         }

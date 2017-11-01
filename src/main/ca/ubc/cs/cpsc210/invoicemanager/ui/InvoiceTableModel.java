@@ -1,11 +1,9 @@
 package ca.ubc.cs.cpsc210.invoicemanager.ui;
 
+import ca.ubc.cs.cpsc210.invoicemanager.model.AbstractServiceRecord;
 import ca.ubc.cs.cpsc210.invoicemanager.model.Customer;
 import ca.ubc.cs.cpsc210.invoicemanager.model.Invoice;
-import ca.ubc.cs.cpsc210.invoicemanager.model.ServiceRecord;
 
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +79,7 @@ public class InvoiceTableModel extends AbstractTableModel {
         invoices = new ArrayList<Invoice>();
 
         if (customer != null) {
-            for (ServiceRecord next : customer.getServiceRecords()) {
+            for (AbstractServiceRecord next : customer.getServiceRecords()) {
                 invoices.add(next.getInvoice());
             }
         }
