@@ -24,6 +24,16 @@ public abstract class AbstractServiceRecord implements Comparable<AbstractServic
         this.serviceType = serviceType;
     }
 
+    public static AbstractServiceRecord createServiceRecord(ServiceType serviceType, int hours) {
+        switch(serviceType) {
+            case REGULAR:
+            case AFTER_HOURS:
+            case EMERGENCY:
+                return new ServiceRecord(serviceType, hours);
+        }
+        return null;  // shouldn't get here
+    }
+
     public int getRecordID() {
         return recordID;
     }

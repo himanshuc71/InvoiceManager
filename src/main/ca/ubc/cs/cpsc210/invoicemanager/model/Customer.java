@@ -25,7 +25,7 @@ public class Customer {
     // EFFECTS:  adds service record of given type and given number of hours to this customer;
     //           updates customer's service points
     public void addServiceRecord(ServiceType serviceType, int hours) {
-        AbstractServiceRecord abstractServiceRecord = new ServiceRecord(serviceType, hours);
+        AbstractServiceRecord abstractServiceRecord = AbstractServiceRecord.createServiceRecord(serviceType, hours);
         serviceRecords.add(abstractServiceRecord);
         servicePoints += abstractServiceRecord.getServicePoints();
     }

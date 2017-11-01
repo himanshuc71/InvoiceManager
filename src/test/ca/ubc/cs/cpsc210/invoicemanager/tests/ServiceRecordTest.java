@@ -15,7 +15,7 @@ public class ServiceRecordTest {
 
     @Test
     public void testRegular() {
-        testServiceRecord = new ServiceRecord(ServiceType.REGULAR, 2);
+        testServiceRecord = AbstractServiceRecord.createServiceRecord(ServiceType.REGULAR, 2);
 
         assertEquals(AbstractServiceRecord.REG_SERVICEPTS_BASE + 2 * AbstractServiceRecord.REG_SERVICEPTS_HOURLY,
                 testServiceRecord.getServicePoints());
@@ -31,7 +31,7 @@ public class ServiceRecordTest {
 
     @Test
     public void testAfterHours() {
-        testServiceRecord = new ServiceRecord(ServiceType.AFTER_HOURS, 2);
+        testServiceRecord = AbstractServiceRecord.createServiceRecord(ServiceType.AFTER_HOURS, 2);
 
         assertEquals(AbstractServiceRecord.AFTER_HOURS_SERVICEPTS_BASE + 2 * AbstractServiceRecord.AFTER_HOURS_SERVICEPTS_HOURLY,
                 testServiceRecord.getServicePoints());
@@ -47,7 +47,7 @@ public class ServiceRecordTest {
 
     @Test
     public void testEmergency() {
-        testServiceRecord = new ServiceRecord(ServiceType.EMERGENCY, 2);
+        testServiceRecord = AbstractServiceRecord.createServiceRecord(ServiceType.EMERGENCY, 2);
 
         assertEquals(AbstractServiceRecord.EMERG_SERVICEPTS_BASE + 2 * AbstractServiceRecord.EMERG_SERVICEPTS_HOURLY,
                 testServiceRecord.getServicePoints());
