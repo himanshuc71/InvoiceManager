@@ -30,11 +30,11 @@ public class ServiceRecordTest {
     public void testAfterHours() {
         testServiceRecord = AbstractServiceRecord.createServiceRecord(ServiceType.AFTER_HOURS, 2);
 
-        assertEquals(AbstractServiceRecord.AFTER_HOURS_SERVICEPTS_BASE + 2 * AbstractServiceRecord.AFTER_HOURS_SERVICEPTS_HOURLY,
+        assertEquals(AfterHoursServiceRecord.AFTER_HOURS_SERVICEPTS_BASE + 2 * AfterHoursServiceRecord.AFTER_HOURS_SERVICEPTS_HOURLY,
                 testServiceRecord.getServicePoints());
 
-        int calloutFee = AbstractServiceRecord.AFTER_HOURS_CALLOUT;
-        int serviceFee = AbstractServiceRecord.AFTER_HOURS_SERVICE_HOURLY * 2;
+        int calloutFee = AfterHoursServiceRecord.AFTER_HOURS_CALLOUT;
+        int serviceFee = AfterHoursServiceRecord.AFTER_HOURS_SERVICE_HOURLY * 2;
         assertEquals(calloutFee, testServiceRecord.getCalloutFee());
         assertEquals(serviceFee, testServiceRecord.getServiceFee());
 
@@ -46,11 +46,11 @@ public class ServiceRecordTest {
     public void testEmergency() {
         testServiceRecord = AbstractServiceRecord.createServiceRecord(ServiceType.EMERGENCY, 2);
 
-        assertEquals(AbstractServiceRecord.EMERG_SERVICEPTS_BASE + 2 * AbstractServiceRecord.EMERG_SERVICEPTS_HOURLY,
+        assertEquals(EmergencyServiceRecord.EMERG_SERVICEPTS_BASE + 2 * EmergencyServiceRecord.EMERG_SERVICEPTS_HOURLY,
                 testServiceRecord.getServicePoints());
 
-        int calloutFee = AbstractServiceRecord.EMERG_CALLOUT;
-        int serviceFee = AbstractServiceRecord.EMERG_SERVICE_HOURLY * 2;
+        int calloutFee = EmergencyServiceRecord.EMERG_CALLOUT;
+        int serviceFee = EmergencyServiceRecord.EMERG_SERVICE_HOURLY * 2;
         assertEquals(calloutFee, testServiceRecord.getCalloutFee());
         assertEquals(serviceFee, testServiceRecord.getServiceFee());
 

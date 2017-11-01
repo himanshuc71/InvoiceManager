@@ -42,8 +42,8 @@ public class CustomerTest {
 
         assertEquals(3, testCustomer.getServiceRecords().size());
         assertEquals(RegularServiceRecord.REG_SERVICEPTS_BASE + RegularServiceRecord.REG_SERVICEPTS_HOURLY
-                        + AbstractServiceRecord.AFTER_HOURS_SERVICEPTS_BASE + AbstractServiceRecord.AFTER_HOURS_SERVICEPTS_HOURLY
-                        + AbstractServiceRecord.EMERG_SERVICEPTS_BASE + AbstractServiceRecord.EMERG_SERVICEPTS_HOURLY,
+                        + AfterHoursServiceRecord.AFTER_HOURS_SERVICEPTS_BASE + AfterHoursServiceRecord.AFTER_HOURS_SERVICEPTS_HOURLY
+                        + EmergencyServiceRecord.EMERG_SERVICEPTS_BASE + EmergencyServiceRecord.EMERG_SERVICEPTS_HOURLY,
                 testCustomer.getServicePoints());
     }
 
