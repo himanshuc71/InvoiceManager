@@ -1,0 +1,9 @@
+Task M8: I had to add DiscountService type in ServiceType Enum, also I had to add another case to createServiceRecord in AbstractServiceRecord.
+Had to create a new class which extends AbstractServiceRecord and implement all the abstract methods.
+
+Task P3: for this I had to add a new type in ServiceType, also add cases in each of the 3 methods which I made abstract from refactoring.
+Which is confusing and lengthy for a single class of so many subtypes inside.
+Methods needed to be changed getServicePoints(),getCalloutFee(),getServiceFee().
+
+
+

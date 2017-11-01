@@ -57,4 +57,16 @@ public class ServiceRecordTest {
         Invoice invoice = testServiceRecord.getInvoice();
         assertEquals(calloutFee + serviceFee, invoice.getAmountOwing());
     }
+
+    @Test
+    public void testDiscount() {
+        testServiceRecord = AbstractServiceRecord.createServiceRecord(ServiceType.DISCOUNT, 2);
+
+        assertEquals(0, testServiceRecord.getServicePoints());
+        assertEquals(0, testServiceRecord.getCalloutFee());
+        assertEquals(DiscountServiceRecord.DIS_SERVICE_HOURLY * 2, testServiceRecord.getServiceFee());
+
+        Invoice invoice = testServiceRecord.getInvoice();
+        assertEquals(0 + DiscountServiceRecord.DIS_SERVICE_HOURLY * 2, invoice.getAmountOwing());
+    }
 }

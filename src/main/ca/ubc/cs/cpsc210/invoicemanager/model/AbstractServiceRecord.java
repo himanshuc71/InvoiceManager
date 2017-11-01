@@ -13,13 +13,15 @@ public abstract class AbstractServiceRecord implements Comparable<AbstractServic
     }
 
     public static AbstractServiceRecord createServiceRecord(ServiceType serviceType, int hours) {
-        switch(serviceType) {
+        switch (serviceType) {
             case REGULAR:
-                return new RegularServiceRecord(serviceType,hours);
+                return new RegularServiceRecord(serviceType, hours);
             case AFTER_HOURS:
                 return new AfterHoursServiceRecord(serviceType, hours);
             case EMERGENCY:
                 return new EmergencyServiceRecord(serviceType, hours);
+            case DISCOUNT:
+                return new DiscountServiceRecord(serviceType, hours);
         }
         return null;  // shouldn't get here
     }

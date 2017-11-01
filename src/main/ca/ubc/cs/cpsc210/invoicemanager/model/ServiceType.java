@@ -4,7 +4,9 @@ package ca.ubc.cs.cpsc210.invoicemanager.model;
 public enum ServiceType {
     REGULAR("Regular hours"),
     AFTER_HOURS("Evenings/Weekends"),
-    EMERGENCY("Emergency callout");
+    EMERGENCY("Emergency callout"),
+    DISCOUNT("Discount service");
+
 
     private String displayName;
 
