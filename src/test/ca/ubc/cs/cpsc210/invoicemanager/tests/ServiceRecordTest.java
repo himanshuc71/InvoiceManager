@@ -1,9 +1,6 @@
 package ca.ubc.cs.cpsc210.invoicemanager.tests;
 
-import ca.ubc.cs.cpsc210.invoicemanager.model.AbstractServiceRecord;
-import ca.ubc.cs.cpsc210.invoicemanager.model.Invoice;
-import ca.ubc.cs.cpsc210.invoicemanager.model.ServiceRecord;
-import ca.ubc.cs.cpsc210.invoicemanager.model.ServiceType;
+import ca.ubc.cs.cpsc210.invoicemanager.model.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,11 +14,11 @@ public class ServiceRecordTest {
     public void testRegular() {
         testServiceRecord = AbstractServiceRecord.createServiceRecord(ServiceType.REGULAR, 2);
 
-        assertEquals(AbstractServiceRecord.REG_SERVICEPTS_BASE + 2 * AbstractServiceRecord.REG_SERVICEPTS_HOURLY,
+        assertEquals(RegularServiceRecord.REG_SERVICEPTS_BASE + 2 * RegularServiceRecord.REG_SERVICEPTS_HOURLY,
                 testServiceRecord.getServicePoints());
 
-        int calloutFee = AbstractServiceRecord.REG_CALLOUT;
-        int serviceFee = AbstractServiceRecord.REG_SERVICE_HOURLY * 2;
+        int calloutFee = RegularServiceRecord.REG_CALLOUT;
+        int serviceFee = RegularServiceRecord.REG_SERVICE_HOURLY * 2;
         assertEquals(calloutFee, testServiceRecord.getCalloutFee());
         assertEquals(serviceFee, testServiceRecord.getServiceFee());
 

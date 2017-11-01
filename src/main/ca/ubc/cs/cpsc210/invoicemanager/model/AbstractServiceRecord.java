@@ -1,10 +1,6 @@
 package ca.ubc.cs.cpsc210.invoicemanager.model;
 
 public abstract class AbstractServiceRecord implements Comparable<AbstractServiceRecord> {
-    public static int REG_CALLOUT = 80;
-    public static int REG_SERVICE_HOURLY = 80;
-    public static int REG_SERVICEPTS_BASE = 10;
-    public static int REG_SERVICEPTS_HOURLY = 2;
     public static int AFTER_HOURS_CALLOUT = 120;
     public static int AFTER_HOURS_SERVICE_HOURLY = 100;
     public static int AFTER_HOURS_SERVICEPTS_BASE = 5;
@@ -27,6 +23,7 @@ public abstract class AbstractServiceRecord implements Comparable<AbstractServic
     public static AbstractServiceRecord createServiceRecord(ServiceType serviceType, int hours) {
         switch(serviceType) {
             case REGULAR:
+                return new RegularServiceRecord(serviceType,hours);
             case AFTER_HOURS:
             case EMERGENCY:
                 return new ServiceRecord(serviceType, hours);

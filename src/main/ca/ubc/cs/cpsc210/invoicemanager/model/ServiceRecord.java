@@ -17,7 +17,7 @@ public class ServiceRecord extends AbstractServiceRecord {
 
         switch(serviceType) {
             case REGULAR:
-                servicePoints = REG_SERVICEPTS_BASE + hours * REG_SERVICEPTS_HOURLY;
+                servicePoints = RegularServiceRecord.REG_SERVICEPTS_BASE + hours * RegularServiceRecord.REG_SERVICEPTS_HOURLY;
                 break;
             case AFTER_HOURS:
                 servicePoints = AFTER_HOURS_SERVICEPTS_BASE + hours * AFTER_HOURS_SERVICEPTS_HOURLY;
@@ -37,7 +37,7 @@ public class ServiceRecord extends AbstractServiceRecord {
 
         switch(serviceType) {
             case REGULAR:
-                calloutFee = REG_CALLOUT;
+                calloutFee = RegularServiceRecord.REG_CALLOUT;
                 break;
             case AFTER_HOURS:
                 calloutFee = AFTER_HOURS_CALLOUT;
@@ -57,7 +57,7 @@ public class ServiceRecord extends AbstractServiceRecord {
 
         switch(serviceType) {
             case REGULAR:
-                serviceFee = REG_SERVICE_HOURLY * hours;
+                serviceFee = RegularServiceRecord.REG_SERVICE_HOURLY * hours;
                 break;
             case AFTER_HOURS:
                 serviceFee = AFTER_HOURS_SERVICE_HOURLY * hours;
